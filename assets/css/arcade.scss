@@ -93,6 +93,7 @@ body {
   @media screen and (min-width: $mobile) {
     flex: 1;
     margin: 2.5em;
+    min-height: 560px;
   }
 
   &:after {
@@ -162,8 +163,25 @@ body {
     cursor: pointer;
     flex-grow: 1;
     transform: rotate(0deg);
+    background-size: contain;
+    background-position: center;
+    animation: 15s background-travel infinite ease-in-out;
+    &.game-one {
+      background-image: url("../images/pixelpat.png");
+    }
+    &.game-two {
+      background-image: url("../images/pixelspice.png");
+    }
     &:hover {
-      animation: 3s shimmer infinite linear;
+      animation: 15s background-travel infinite ease-in-out, 3s shimmer infinite linear;
+    }
+    .game-icon-content {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      background: rgba(0,0,0,0.8);
+      padding: 1em;
+      color: white;
     }
     @media screen and (min-width: $mobile) {
       font-size: 1.3em;
@@ -297,14 +315,57 @@ body {
   }
 }
 
+.about-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Arcade";
+  color: white;
+  flex: 1;
+  flex-direction: column;
+  padding: 0.5em;
+  font-size: 1.3em;
+  text-align: center;
+  line-height: 1.5;
+  background: {
+    image: url("../images/pixelband.jpg");
+    repeat: no-repeat;
+    size: cover;
+    position: center;
+  }
+  p {
+    padding: 0.5em;
+    background: rgba(0, 100, 0, 0.5);
+  }
+  @media screen and (max-width: $mobile - 1) {
+    font-size: 1em;
+  }
+  &.off {
+    display: none !important;
+  }
+  .about-back {
+    font-size: 0.65em;
+    background: hotpink;
+    border: 3px solid yellow;
+    padding: 0.5em;
+    cursor: pointer;
+    &:hover {
+      animation: 3s shimmer infinite linear;
+    }
+  }
+}
+
 .arcade-player {
-  span {
+  .player-info {
     width: 100%;
     padding: 0.5em;
     color: white;
     background: blue;
     border: 3px solid yellow;
     text-align: center;
+  }
+  .play-button {
+    display: none;
   }
 }
 
@@ -323,7 +384,7 @@ body {
     border-bottom-right-radius: 15px;
     transform: perspective(500px) rotateX(30deg) scale(1.11);
   }
-  span {
+  .drawer-button {
     color: white;
     margin: 0 0.5em;
     padding: 0.5em;
